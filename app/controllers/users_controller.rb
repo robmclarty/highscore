@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, :except => [:new, :create]
+  before_action :require_login # disable signup, :except => [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy, :generate_api_key]
 
   # GET /users
