@@ -52,6 +52,30 @@
 
 <script>
   $(function() {
+    var data = {
+      game_id: 1,
+      api_key: "52444cd19d88c9ebc201bb0464f853ba"
+    };
+
+    $.get('http://hiscore.heroku.com/api/scores', data)
+      .done(function(d) {
+        console.log(d);
+        alert(d);
+      });
+
+    // $.ajax({
+    //   type: 'GET',
+    //   url: 'http://hiscore.heroku.com/api/scores',
+    //   contentType: 'application/json',
+    //   dataType: 'json',
+    //   data: JSON.stringify(data),
+    //   success: function(response, status) {
+    //     console.log('success: ', response);
+    //   },
+    //   error: function(response, status, error) {
+    //     console.log('error: ', response, status);
+    //   }
+    // });
 
     $('#new-score-form').submit(function(e) {
       e.preventDefault();
@@ -69,7 +93,7 @@
 
       $.ajax({
         type: 'POST',
-        url: '/api/scores',
+        url: 'http://hiscore.heroku.com/api/scores',
         contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify(data),

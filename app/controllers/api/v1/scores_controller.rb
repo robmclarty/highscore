@@ -6,6 +6,7 @@ module Api
       respond_to :json
 
       def index
+        headers['Access-Control-Allow-Origin'] = "*"
         # @game = Game.find(params[:game_id])
         
         # respond_with @game.scores.order('score desc')
@@ -14,12 +15,14 @@ module Api
       end
 
       def show
+        headers['Access-Control-Allow-Origin'] = "*"
         #@game = Game.find(params[:game_id])
         
         respond_with Score.find(params[:id])
       end
 
       def create
+        headers['Access-Control-Allow-Origin'] = "*"
         #@game = Game.find(params[:game_id])
         #params[:score][:game_id] = params[:game_id]
         score = Score.new(score_params)
