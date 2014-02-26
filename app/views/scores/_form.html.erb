@@ -1,4 +1,4 @@
-<%= form_for(@score) do |f| %>
+<%= form_for [@game, @score] do |f| %>
   <% if @score.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@score.errors.count, "error") %> prohibited this score from being saved:</h2>

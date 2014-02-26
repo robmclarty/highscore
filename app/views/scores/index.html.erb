@@ -18,9 +18,9 @@
         <td><%= score.name %></td>
         <td><%= score.score %></td>
         <td><%= score.game_id %></td>
-        <td><%= link_to 'Show', score %></td>
-        <td><%= link_to 'Edit', edit_score_path(score) %></td>
-        <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [@game, score] %></td>
+        <td><%= link_to 'Edit', edit_game_score_path(@game, score) %></td>
+        <td><%= link_to 'Destroy', [@game, score], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Score', new_score_path %>
+<%= link_to 'New Score', new_game_score_path(@game) %>

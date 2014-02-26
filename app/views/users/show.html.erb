@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @user.website %>
+</p>
+
+<p>
+  <strong>Games:</strong>
+  <ul>
+    <%- @games.each do |game| %>
+      <li><%= link_to game.name, game %></li>
+    <%- end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

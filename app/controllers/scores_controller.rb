@@ -1,6 +1,6 @@
 class ScoresController < ApplicationController
   before_action :set_score, only: [:show, :edit, :update, :destroy]
-  before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :set_game
 
   # GET /scores
   # GET /scores.json
@@ -30,7 +30,7 @@ class ScoresController < ApplicationController
 
     respond_to do |format|
       if @score.save
-        format.html { redirect_to @score, notice: 'Score was successfully created.' }
+        format.html { redirect_to [@game, @score], notice: 'Score was successfully created.' }
         format.json { render action: 'show', status: :created, location: @score }
       else
         format.html { render action: 'new' }
@@ -44,7 +44,7 @@ class ScoresController < ApplicationController
   def update
     respond_to do |format|
       if @score.update(score_params)
-        format.html { redirect_to @score, notice: 'Score was successfully updated.' }
+        format.html { redirect_to [@game, @score], notice: 'Score was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -58,7 +58,7 @@ class ScoresController < ApplicationController
   def destroy
     @score.destroy
     respond_to do |format|
-      format.html { redirect_to scores_url }
+      format.html { redirect_to game_scores_url(@game) }
       format.json { head :no_content }
     end
   end

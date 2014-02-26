@@ -1,0 +1,21 @@
+<h1>Login</h1>
+
+<%- if alert %>
+  <p class="warning" style="color: #eeb111">
+    <%= alert %>
+  </p>
+<%- end %>
+
+<%= form_tag sessions_path, :class => 'user-form' do %>
+  <div class="field">
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email], :id => "login-email", :autofocus => "autofocus" %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %>
+    <%= password_field_tag :password, params[:password], :id => "login-password"%>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Login", :class => "button plain" %>
+  </div>
+<% end %>

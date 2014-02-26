@@ -1,0 +1,34 @@
+<h1>Signup</h1>
+
+<%- if alert %>
+  <p class="warning" style="color: #eeb111">
+    <%= alert %>
+  </p>
+<%- end %>
+
+<%= form_for @user, :class => 'user-form' do |f| %>
+  <%- if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, 'error') %>
+        prohibited this user from being saved:
+      </h2>
+      <ul>
+        <%- @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <%- end %>
+      </ul>
+    </div>
+  <%- end %>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email, :id => "signup-email", :autofocus => "autofocus" %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, :id => "signup-password"%>
+  </div>
+  <div class="actions">
+    <%= f.submit "Signup", :class => "button plain" %>
+  </div>
+<% end %>
