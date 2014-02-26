@@ -26,7 +26,7 @@ module Api
       end
 
       def index
-        respond_with Score.where(:game_id => [:game_id]).order('score desc')
+        respond_with Score.where(:game_id => params[:game_id]).order('score desc')
       end
 
       def show        
