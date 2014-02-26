@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :games
+  has_many :api_keys
   has_secure_password
 
   validates :email,

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, :except => [:new, :create]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :generate_api_key]
 
   # GET /users
   # GET /users.json
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @games = @user.games
+    @api_key = @user.api_keys.first.blank? ? 'not set' : @user.api_keys.first.access_token
   end
 
   # GET /users/new
@@ -52,6 +54,14 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def generate_api_key
+    @user.api_keys.each do |api_key|
+      api_key.destroy
+    end
+    @user.api_keys << ApiKey.new
+    redirect_to @user
   end
 
   # DELETE /users/1

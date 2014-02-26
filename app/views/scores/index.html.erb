@@ -29,3 +29,58 @@
 <br>
 
 <%= link_to 'New Score', new_game_score_path(@game) %>
+
+<br><br>
+
+<form id="new-score-form">
+  <div class="field">
+    <%= label_tag :name %><br>
+    <%#= text_field_tag :name %>
+    <input type="text" id="new-name">
+  </div>
+  <div class="field">
+    <%= label_tag :score %><br>
+    <%#= number_field_tag :score %>
+    <input type="text" id="new-score">
+  </div>
+  <div class="field">
+    <%#= label_tag :game_id %><br>
+    <%#= number_field_tag :game_id, @game.id %>
+  </div>
+  <%= submit_tag 'Submit' %>
+</form>
+
+<script>
+  $(function() {
+
+    $('#new-score-form').submit(function(e) {
+      e.preventDefault();
+
+      var data = {
+        score: {
+          name: $('#new-name').val(),
+          score: $('#new-score').val(),
+          api_key: "<%= @game.user.api_keys.first.access_token %>",
+          game_id: <%= @game.id %>
+        }
+      };
+
+      console.log(JSON.stringify(data));
+
+      $.ajax({
+        type: 'POST',
+        url: '/api/scores',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify(data),
+        success: function(response, status) {
+          console.log('success: ', response);
+        },
+        error: function(response, status, error) {
+          console.log('error: ', response, status);
+        }
+      });
+    });
+
+  });
+</script>

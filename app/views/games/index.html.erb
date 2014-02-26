@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Name</th>
       <th>Description</th>
       <th>Url</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @games.each do |game| %>
       <tr>
+        <td><%= game.id %></td>
         <td><%= game.name %></td>
         <td><%= game.description %></td>
         <td><%= game.url %></td>

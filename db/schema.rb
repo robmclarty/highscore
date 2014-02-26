@@ -11,15 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226193408) do
+ActiveRecord::Schema.define(version: 20140226194558) do
+
+  create_table "api_keys", force: true do |t|
+    t.integer  "user_id"
+    t.string   "access_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "games", force: true do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.text     "description"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "scores", force: true do |t|
