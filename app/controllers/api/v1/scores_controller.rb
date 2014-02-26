@@ -10,7 +10,7 @@ module Api
         
         # respond_with @game.scores.order('score desc')
 
-        respond_with Score.where(:game_id => params[:score][:game_id]).order('score desc')
+        respond_with Score.where(:game_id => [:game_id]).order('score desc')
       end
 
       def show
