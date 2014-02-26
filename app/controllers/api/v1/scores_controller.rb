@@ -3,28 +3,37 @@ module Api
     class ScoresController < ApplicationController
       skip_before_action :verify_authenticity_token
       before_action :restrict_access
+      before_action :cors_preflight_check
+      after_action :cors_set_access_control_headers
       respond_to :json
 
-      def index
-        response.headers['Access-Control-Allow-Origin'] = "*"
-        # @game = Game.find(params[:game_id])
-        
-        # respond_with @game.scores.order('score desc')
+      # For all responses in this controller, return the CORS access control headers.
+      def cors_set_access_control_headers
+        headers['Access-Control-Allow-Origin'] = '*'
+        headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+        headers['Access-Control-Max-Age'] = "1728000"
+      end
 
+      # If this is a preflight OPTIONS request, then short-circuit the
+      # request, return only the necessary headers and return an empty
+      # text/plain.
+
+      def cors_preflight_check
+        headers['Access-Control-Allow-Origin'] = '*'
+        headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+        headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version'
+        headers['Access-Control-Max-Age'] = '1728000'
+      end
+
+      def index
         respond_with Score.where(:game_id => [:game_id]).order('score desc')
       end
 
-      def show
-        response.headers['Access-Control-Allow-Origin'] = "*"
-        #@game = Game.find(params[:game_id])
-        
+      def show        
         respond_with Score.find(params[:id])
       end
 
       def create
-        response.headers['Access-Control-Allow-Origin'] = "*"
-        #@game = Game.find(params[:game_id])
-        #params[:score][:game_id] = params[:game_id]
         score = Score.new(score_params)
         score.game_id = params[:score][:game_id]
 

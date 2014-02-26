@@ -3,6 +3,7 @@ require 'api_contraints'
 Highscore::Application.routes.draw do
   namespace :api, defaults: { format: 'json' } do
     scope module: :v1, contraints: ApiContraints.new(version: 1, default: true) do
+      #match 'scores', to: 'scores#index', via: [:options]
       resources :scores
     end
     # scope module: :v2, contraints: ApiContraints.new(version: 2, default: true) do
