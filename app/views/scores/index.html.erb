@@ -30,16 +30,17 @@
 
 <%= link_to 'New Score', new_game_score_path(@game) %>
 
+<!--
 <br><br>
 
 <form id="new-score-form">
   <div class="field">
-    <%= label_tag :name %><br>
+    <%#= label_tag :name %><br>
     <%#= text_field_tag :name %>
     <input type="text" id="new-name">
   </div>
   <div class="field">
-    <%= label_tag :score %><br>
+    <%#= label_tag :score %><br>
     <%#= number_field_tag :score %>
     <input type="text" id="new-score">
   </div>
@@ -47,9 +48,11 @@
     <%#= label_tag :game_id %><br>
     <%#= number_field_tag :game_id, @game.id %>
   </div>
-  <%= submit_tag 'Submit' %>
+  <%#= submit_tag 'Submit' %>
 </form>
+-->
 
+<!--
 <script>
   $(function() {
     var data = {
@@ -59,10 +62,10 @@
 
     $.ajax({
       type: 'GET',
-      url: 'http://hiscore.heroku.com/api/scores',
+      url: 'http://hiscore.herokuapp.com/api/scores',
       contentType: 'application/json',
       dataType: 'json',
-      data: JSON.stringify(data),
+      data: data,
       success: function(response, status) {
         console.log('success: ', response);
       },
@@ -71,35 +74,36 @@
       }
     });
 
-    $('#new-score-form').submit(function(e) {
-      e.preventDefault();
+    // $('#new-score-form').submit(function(e) {
+    //   e.preventDefault();
 
-      var data = {
-        score: {
-          name: $('#new-name').val(),
-          score: $('#new-score').val(),
-          api_key: "<%= @game.user.api_keys.first.access_token %>",
-          game_id: <%= @game.id %>
-        }
-      };
+    //   var data = {
+    //     score: {
+    //       name: $('#new-name').val(),
+    //       score: $('#new-score').val(),
+    //       api_key: "<%#= @game.user.api_keys.first.access_token %>",
+    //       game_id: <%#= @game.id %>
+    //     }
+    //   };
 
-      console.log(JSON.stringify(data));
+    //   console.log(JSON.stringify(data));
 
-      $.ajax({
-        type: 'POST',
-        url: 'http://hiscore.heroku.com/api/scores',
-        //url: 'http://localhost:3000/api/scores',
-        contentType: 'application/json',
-        dataType: 'json',
-        data: JSON.stringify(data),
-        success: function(response, status) {
-          console.log('success: ', response);
-        },
-        error: function(response, status, error) {
-          console.log('error: ', response, status);
-        }
-      });
-    });
+    //   $.ajax({
+    //     type: 'POST',
+    //     url: 'http://hiscore.heroku.com/api/scores',
+    //     //url: 'http://localhost:3000/api/scores',
+    //     contentType: 'application/json',
+    //     dataType: 'json',
+    //     data: JSON.stringify(data),
+    //     success: function(response, status) {
+    //       console.log('success: ', response);
+    //     },
+    //     error: function(response, status, error) {
+    //       console.log('error: ', response, status);
+    //     }
+    //   });
+    //});
 
   });
 </script>
+-->
