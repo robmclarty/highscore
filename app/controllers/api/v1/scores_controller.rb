@@ -35,7 +35,7 @@ module Api
 
       def create
         score = Score.new(score_params)
-        score.game_id = params[:score][:game_id]
+        #score.game_id = params[:score][:game_id]
 
         if score.save
           render json: score, status: :created, location: "/api/scores/#{ score.id }"
@@ -57,11 +57,9 @@ module Api
         valid_api_key = false
         game = params.has_key?(:score) ? Game.find(params[:score][:game_id]) : Game.find(params[:game_id])
         api_key = ApiKey.find_by_access_token(params[:api_key])
-
-        puts params
         
         unless api_key.blank? && game.blank?
-          valid_api_key = api_key.user_id == game.user_id
+          valid_api_key = api_key.user_id == game.user.id
         end
 
         head :unauthorized unless api_key && valid_api_key
