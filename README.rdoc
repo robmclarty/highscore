@@ -26,3 +26,56 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+// List all scores (sorted highest to lowest)
+    $.ajax({
+      type: 'GET',
+      url: 'http://hiscore.herokuapp.com/api/scores',
+      contentType: 'application/json',
+      dataType: 'json',
+      data: {
+        game_id: 1,
+        api_key: "52444cd19d88c9ebc201bb0464f853ba"
+      },
+      success: function(response, status) {
+        console.log('success: ', response);
+      },
+      error: function(response, status, error) {
+        console.log('error: ', response, status);
+      }
+    });
+
+    // Add new score
+    $('#new-score-form').submit(function(e) {
+      e.preventDefault();
+
+      var data = {
+        score: {
+          name: $('#new-name').val(),
+          score: $('#new-score').val(),
+          api_key: '152444cd19d88c9ebc201bb0464f853ba',
+          game_id: 1
+        }
+      };
+
+      $.ajax({
+        type: 'POST',
+        url: 'http://hiscore.heroku.com/api/scores',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: {
+          score: {
+            name: $('#new-name').val(),
+            score: $('#new-score').val(),
+            api_key: '152444cd19d88c9ebc201bb0464f853ba',
+            game_id: 1
+          }
+        },
+        success: function(response, status) {
+          console.log('success: ', response);
+        },
+        error: function(response, status, error) {
+          console.log('error: ', response, status);
+        }
+      });
+    });

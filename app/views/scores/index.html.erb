@@ -55,24 +55,24 @@
 <!--
 <script>
   $(function() {
-    var data = {
-      game_id: 1,
-      api_key: "52444cd19d88c9ebc201bb0464f853ba"
-    };
+    // var data = {
+    //   game_id: 1,
+    //   api_key: "52444cd19d88c9ebc201bb0464f853ba"
+    // };
 
-    $.ajax({
-      type: 'GET',
-      url: 'http://hiscore.herokuapp.com/api/scores',
-      contentType: 'application/json',
-      dataType: 'json',
-      data: data,
-      success: function(response, status) {
-        console.log('success: ', response);
-      },
-      error: function(response, status, error) {
-        console.log('error: ', response, status);
-      }
-    });
+    // $.ajax({
+    //   type: 'GET',
+    //   url: 'http://hiscore.herokuapp.com/api/scores',
+    //   contentType: 'application/json',
+    //   dataType: 'json',
+    //   data: data,
+    //   success: function(response, status) {
+    //     console.log('success: ', response);
+    //   },
+    //   error: function(response, status, error) {
+    //     console.log('error: ', response, status);
+    //   }
+    // });
 
     // $('#new-score-form').submit(function(e) {
     //   e.preventDefault();
@@ -103,6 +103,143 @@
     //     }
     //   });
     //});
+
+    // List all scores (sorted highest to lowest)
+    // $.ajax({
+    //   type: 'GET',
+    //   url: 'http://hiscore.herokuapp.com/api/scores',
+    //   contentType: 'application/json',
+    //   dataType: 'json',
+    //   data: {
+    //     game_id: 1,
+    //     api_key: "52444cd19d88c9ebc201bb0464f853ba"
+    //   },
+    //   success: function(response, status) {
+    //     console.log('success: ', response);
+    //     console.log('status: ', status);
+    //   },
+    //   error: function(response, status, error) {
+    //     console.log('error: ', response);
+    //     console.log(status);
+    //     console.log(error);
+    //     //console.log(response.getResponseHeader());
+    //   }
+    // });
+
+
+////////////////////
+
+    // $.get('http://hiscore.herokuapp.com/api/scores', { game_id: 1, api_key: '52444cd19d88c9ebc201bb0464f853ba' }, 'json')
+    //   .done(function(data, status, jqXHR) {
+    //     console.log(data);
+    //     console.log("success")
+    //   })
+    //   .fail(function(jqXHR, status, error) {
+    //     console.log("error");
+    //   })
+    //   .always(function() {
+    //     console.log("finished");
+    //   });
+
+    // var data = {
+    //   api_key: '152444cd19d88c9ebc201bb0464f853ba',
+    //   score: {
+    //     name: 'Rob',
+    //     score: 10,
+    //     game_id: 1
+    //   }
+    // };
+
+    // $.post('http://hiscore.herokuapp.com/api/scores', data, 'json')
+    //   .done(function(data, status, jqXHR) {
+    //     console.log( "success" );
+    //   })
+    //   .fail(function(jqXHR, status, error) {
+    //     console.log( "error" );
+    //   })
+    //   .always(function() {
+    //     console.log( "finished" );
+    //   });
+
+
+    // $.get('http://localhost:3000/api/scores', { game_id: 1, api_key: '55d43ffd89a1979d5a140ea8d8edf785' }, 'json')
+    //   .done(function(data, status, jqXHR) {
+    //     console.log(data);
+    //     console.log("success")
+    //   })
+    //   .fail(function(jqXHR, status, error) {
+    //     console.log("error");
+    //   })
+    //   .always(function() {
+    //     console.log("finished");
+    //   });
+
+    // var data = {
+    //   api_key: '55d43ffd89a1979d5a140ea8d8edf785',
+    //   score: {
+    //     name: 'Rob',
+    //     score: 10,
+    //     game_id: 1
+    //   }
+    // };
+
+    // $.post('http://localhost:3000/api/scores', data, 'json')
+    //   .done(function(data, status, jqXHR) {
+    //     console.log( "success" );
+    //   })
+    //   .fail(function(jqXHR, status, error) {
+    //     console.log( "error" );
+    //   })
+    //   .always(function() {
+    //     console.log( "finished" );
+    //   });
+
+////////////////////
+
+    // $.ajax({
+    //   type: 'GET',
+    //   url: 'http://hiscore.herokuapp.com/api/scores?game_id=1&api_key=52444cd19d88c9ebc201bb0464f853ba',
+    //   dataType: 'json',
+    //   success: function(response, status) {
+    //     console.log('success: ', response);
+    //     console.log('status: ', status);
+    //   },
+    //   error: function(response, status, error) {
+    //     console.log('error: ', response);
+    //     console.log(status);
+    //     console.log(error);
+    //     //console.log(response.getResponseHeader());
+    //   }
+    // });
+
+    // Add new score
+    // $('#new-score-form').submit(function(e) {
+    //   e.preventDefault();
+
+    //   var data = {
+    //     score: {
+    //       name: $('#new-name').val(),
+    //       score: $('#new-score').val(),
+    //       api_key: '152444cd19d88c9ebc201bb0464f853ba',
+    //       game_id: 1
+    //     }
+    //   };
+
+
+
+      // $.ajax({
+      //   type: 'POST',
+      //   url: 'http://hiscore.herokuapp.com/api/scores',
+      //   contentType: 'application/json',
+      //   dataType: 'json',
+      //   data: data,
+      //   success: function(response, status) {
+      //     console.log('success: ', response);
+      //   },
+      //   error: function(response, status, error) {
+      //     console.log('error: ', response, status);
+      //   }
+      // });
 
   });
 </script>

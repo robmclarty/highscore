@@ -26,8 +26,6 @@ module Api
       end
 
       def index
-        # score = Score.where(:game_id => params[:game_id]).order('score desc')
-        # puts "@@@@@@@@" + score
         respond_with Score.where(:game_id => params[:game_id]).order('score desc')
       end
 
@@ -56,21 +54,10 @@ module Api
       end
 
       def restrict_access
-        api_key = nil
-        game = nil
+        game = params.has_key?(:score) ? Game.find(params[:score][:game_id]) : Game.find(params[:game_id])
+        api_key = ApiKey.find_by_access_token(params[:api_key])
 
         puts params
-
-        if params.has_key?(:score)
-          game = Game.find(params[:score][:game_id])
-          api_key = ApiKey.find_by_access_token(params[:score][:api_key])
-        else
-          game = Game.find(params[:game_id])
-          api_key = ApiKey.find_by_access_token(params[:api_key])
-        end
-
-        puts "@@@@@@@@@@@"
-        puts api_key
         
         if api_key && game
           valid_api_key = api_key.user_id == game.user.id
