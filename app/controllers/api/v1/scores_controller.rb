@@ -54,13 +54,14 @@ module Api
       end
 
       def restrict_access
+        valid_api_key = false
         game = params.has_key?(:score) ? Game.find(params[:score][:game_id]) : Game.find(params[:game_id])
         api_key = ApiKey.find_by_access_token(params[:api_key])
 
         puts params
         
-        if api_key && game
-          valid_api_key = api_key.user_id == game.user.id
+        unless api_key.blank? && game.blank?
+          valid_api_key = api_key.user_id == game.user_id
         end
 
         head :unauthorized unless api_key && valid_api_key

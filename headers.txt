@@ -1,20 +1,15 @@
-HTTP/1.1 200 OK 
-Access-Control-Allow-Headers: Origin,Accept,Content-Type,X-Requested-With,auth_token,X-CSRF-Token
-Access-Control-Allow-Methods: POST, GET, OPTIONS
-Access-Control-Allow-Origin: *
-Access-Control-Max-Age: 1728000
-Cache-Control: max-age=0, private, must-revalidate
-Content-Type: application/json; charset=utf-8
-Date: Fri, 28 Feb 2014 15:23:42 GMT
-Etag: "ec3b8090eb2835f55db1598424420ee4"
+HTTP/1.1 401 Unauthorized 
+Cache-Control: no-cache
+Content-Type: text/html
+Date: Fri, 28 Feb 2014 16:07:42 GMT
 Server: WEBrick/1.3.1 (Ruby/2.0.0/2014-02-24)
-Set-Cookie: request_method=GET; path=/
+Set-Cookie: request_method=POST; path=/
 X-Content-Type-Options: nosniff
 X-Frame-Options: SAMEORIGIN
-X-Request-Id: 9f19cedc-3568-41f5-904a-0e732839f833
-X-Runtime: 0.045732
+X-Request-Id: 4426fa35-fa7f-48c6-ae52-311f6301e0a6
+X-Runtime: 0.037197
 X-Ua-Compatible: chrome=1
 X-Xss-Protection: 1; mode=block
-Content-Length: 1053
+Content-Length: 1
 Connection: keep-alive
 

@@ -141,26 +141,27 @@
     //     console.log("finished");
     //   });
 
-    // var data = {
-    //   api_key: '152444cd19d88c9ebc201bb0464f853ba',
-    //   score: {
-    //     name: 'Rob',
-    //     score: 10,
-    //     game_id: 1
-    //   }
-    // };
+    var data = {
+      api_key: '152444cd19d88c9ebc201bb0464f853ba',
+      score: {
+        name: 'Rob',
+        score: 10,
+        game_id: 1
+      }
+    };
 
-    // $.post('http://hiscore.herokuapp.com/api/scores', data, 'json')
-    //   .done(function(data, status, jqXHR) {
-    //     console.log( "success" );
-    //   })
-    //   .fail(function(jqXHR, status, error) {
-    //     console.log( "error" );
-    //   })
-    //   .always(function() {
-    //     console.log( "finished" );
-    //   });
+    $.post('http://hiscore.herokuapp.com/api/scores', data, 'json')
+      .done(function(data, status, jqXHR) {
+        console.log( "success" );
+      })
+      .fail(function(jqXHR, status, error) {
+        console.log( "error" );
+      })
+      .always(function() {
+        console.log( "finished" );
+      });
 
+      //'{"api_key": "152444cd19d88c9ebc201bb0464f853ba", "score": {"name": "Rob", "score": 10, "game_id": 1 }}'
 
     // $.get('http://localhost:3000/api/scores', { game_id: 1, api_key: '55d43ffd89a1979d5a140ea8d8edf785' }, 'json')
     //   .done(function(data, status, jqXHR) {
