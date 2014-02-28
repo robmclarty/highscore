@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Score</th>
       <th>Game</th>
+      <th>Created</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,7 +18,8 @@
       <tr>
         <td><%= score.name %></td>
         <td><%= score.score %></td>
-        <td><%= score.game_id %></td>
+        <td><%= score.game.name %></td>
+        <td><%= time_ago_in_words(score.created_at) %> ago</td>
         <td><%= link_to 'Show', [@game, score] %></td>
         <td><%= link_to 'Edit', edit_game_score_path(@game, score) %></td>
         <td><%= link_to 'Destroy', [@game, score], method: :delete, data: { confirm: 'Are you sure?' } %></td>
