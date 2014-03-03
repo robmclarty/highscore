@@ -6,7 +6,7 @@ class ScoresController < ApplicationController
   # GET /scores
   # GET /scores.json
   def index
-    @scores = @game.scores.order('score desc')
+    @scores = @game.scores.order('score desc', 'created_at desc')
   end
 
   # GET /scores/1

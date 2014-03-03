@@ -5,7 +5,7 @@ class Game < ActiveRecord::Base
   def as_json(options={})
     result = super.merge(options)
     result['_id'] = self.id.to_s
-    result['scores'] = self.games
+    result['scores'] = self.scores
 
     result
   end
