@@ -9,4 +9,8 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Highscore::Application.config.secret_key_base = 'e19f449263606c7f7bcc2a914c1668d6a3065d1964a61a6b65626fd8ab9df0d22450f35dfecb520d78387dccf783d96febeed2ed56b6cd42c69f2e200190fdae'
+Highscore::Application.config.secret_key_base = if Rails.env.development? or Rails.env.test?
+  ('x' * 30) # meets minimum requirement of 30 chars long
+else
+  ENV['SECRET_TOKEN']
+end
