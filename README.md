@@ -1,7 +1,14 @@
 # Highscore API
 
-A simple API app for storing game highscores in the cloud. Demonstrates basic usage of versioned
-API with CORS.
+*A simple versioned API app for storing game highscores in the cloud with CORS.*
 
-Used in [Floppy Dragon](http://verold.itch.io/floppy-dragon) by 
-[Justin Holdstock](https://twitter.com/JimmyKillem).
+## Demo
+
+[Floppy Dragon](http://verold.itch.io/floppy-dragon) by 
+[Justin Holdstock](https://twitter.com/JimmyKillem)
+
+## Author
+
+Rob McLarty
+[@robmclarty](http://twitter.com/robmclarty)
+[robmclarty.com](http://robmclarty.com)
